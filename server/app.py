@@ -23,8 +23,9 @@ app.json.compact = False
 migrate = Migrate(app, db)
 db.init_app(app)
 
-@app.errorhandler(404)
-def not_found(e):
+@app.route('/')
+@app.route('/<int:id>')
+def index(id=0):
     return render_template("index.html")
 
 api = Api(app)
